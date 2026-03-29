@@ -1,0 +1,156 @@
+/* MARK: font */
+
+.cursive-font {
+    font-family: "Bonheur Royale", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.label-font {
+    font-family: "Lexend Deca", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* MARK: general */
+
+body {
+    overflow: hidden;
+    width: 100vw;
+    height: 100dvh;
+    margin: 0;
+    background: rgb(205, 205, 205);
+    color: rgb(65, 65, 65);
+}
+
+#main-wrapper {
+    height: 100%;
+    width: 100%;
+    max-width: 572px;
+    margin: 0 auto;
+    background: white;
+}
+
+#main-wrapper section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* MARK: cover */
+
+section#cover .background {
+    width: 100%;
+}
+
+section#cover .background-wrapper {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+}
+
+section#cover .background-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 51.5%;
+    background-image: url(./assets/cover.jpg);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    transform: scaleY(-1);
+    transform-origin: top;
+}
+
+section#cover .cover-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 310px);
+}
+
+section#cover .title-wrapper {
+    position: relative;
+    top: 0;
+    height: 100%;
+    max-height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+section#cover .title-wrapper .headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+section#cover .title-wrapper .headline .label {
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 36px;
+}
+
+section#cover .title-wrapper .headline .title {
+    position: relative;
+    font-size: 28px;
+
+    font-family: "Bonheur Royale", cursive;
+    font-style: normal;
+}
+
+section#cover .title-wrapper .headline .title h1 {
+    margin: 40px 0;
+    padding-left: 20px;
+}
+
+section#cover .title-wrapper .headline .title::before {
+    content: "Wildan";
+    position: absolute;
+    right: 30px;
+    top: -10px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#cover .title-wrapper .headline .title::after {
+    content: "Gina";
+    position: absolute;
+    left: 40px;
+    bottom: 0px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#cover .title-wrapper .invitee .label {
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+section#cover .title-wrapper .invitee .name {
+    font-size: 28px;
+    font-weight: 200;
+    margin: 0;
+}
+
+section#cover .title-wrapper .invitee button {
+    cursor: pointer;
+    background: rgb(65, 65, 65);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
