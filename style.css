@@ -41,7 +41,7 @@ body {
     left: 0;
     background: rgb(234, 234, 234);
 
-    transition: transform .7s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition: transform .7s cubic-bezier(0.55, 0.085, 0.68, 0.53);
 }
 
 #main-wrapper section.opened {
@@ -230,7 +230,7 @@ section#opening .video-wrapper video {
     width: auto;
     height: 60dvh;
     margin-top: 40px;
-    border-radius: 20px;
+    border-radius: 80px 20px 80px 20px;
 }
 
 section#opening .ayat-wrapper .ayat {
@@ -290,7 +290,8 @@ section.profile .title {
 }
 
 section.profile .separator {
-    margin: 30px 0;
+    margin-top: 14px;
+    margin-bottom: 46px;
 }
 
 section.profile .image-wrapper {
@@ -302,7 +303,7 @@ section.profile .image-wrapper {
 section.profile .image-wrapper img {
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 80px 20px 80px 20px;
 }
 
 section.profile .name {
@@ -310,7 +311,7 @@ section.profile .name {
     font-weight: 300;
     text-align: center;
     margin: 0;
-    margin-top: 18px;
+    margin-top: 24px;
     margin-bottom: 12px;
 }
 
