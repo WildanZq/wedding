@@ -31,6 +31,10 @@ function next() {
             const profileWildan = document.getElementById('profile-wildan');
             profileWildan.classList.add('opened');
             break;
+        case 4:
+            const schedule = document.getElementById('schedule');
+            schedule.classList.add('opened');
+            break;
         default:
             break;
     }
@@ -56,8 +60,12 @@ function prev() {
             profileGina.classList.remove('opened');
             break;
         case 4:
-            const rofileWildan = document.getElementById('profile-wildan');
-            rofileWildan.classList.remove('opened');
+            const profileWildan = document.getElementById('profile-wildan');
+            profileWildan.classList.remove('opened');
+            break;
+        case 5:
+            const schedule = document.getElementById('schedule');
+            schedule.classList.remove('opened');
             break;
         default:
             break;
