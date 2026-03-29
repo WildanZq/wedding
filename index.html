@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding of Gina & Wildan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Lexend+Deca:wght@100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="main-wrapper">
 
@@ -29,33 +32,71 @@
                     <div class="invitee">
                         <h2 class="label label-font">DEAR</h2>
                         <h2 class="name label-font">Fulan bin Fulan</h2>
-                        <button id="open-button">Open Invitation</button>
+                        <button id="open-button" class="shadow">Open Invitation</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- MARK: opening -->
-         <section id="opening">
+        <section id="opening">
             <div class="video-wrapper">
-                <video id="video" loop>
+                <video id="video" loop class="shadow">
                     <source src="./assets/video.mp4" type="video/mp4">
                     Your browser does not support HTML video.
                 </video>
             </div>
             <div class="separator">
                 <span></span>
-            </div> 
+            </div>
             <div class="ayat-wrapper">
                 <p class="ayat label-font">
-                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari
+                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu
+                    rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda
+                    (kebesaran Allah) bagi kaum yang berpikir."
                 </p>
                 <h2 class="qs label-font">(QS. Ar-Rum: 21)</h2>
             </div>
-         </section>
+        </section>
+
+        <!-- MARK: profile gina -->
+        <section id="profile-gina" class="profile">
+            <div>
+                <h1 class="title label-font">MEMPELAI WANITA</h1>
+                <div class="separator">
+                    <span></span>
+                </div>
+                <div class="image-wrapper">
+                    <img src="./assets/gina.jpg" alt="gina" class="shadow">
+                </div>
+                <h2 class="name label-font">Gina Afra Ardelia, S.T.</h2>
+                <p class="desc label-font label">Putri pertama dari</p>
+                <p class="desc label-font">Bapak Andi Sabit Aras, S.P.</p>
+                <p class="desc label-font">Ibu Henni Jumina</p>
+            </div>
+        </section>
+
+        <!-- MARK: profile wildan -->
+        <section id="profile-wildan" class="profile">
+            <div>
+                <h1 class="title label-font">MEMPELAI PRIA</h1>
+                <div class="separator">
+                    <span></span>
+                </div>
+                <div class="image-wrapper">
+                    <img src="./assets/wildan.jpg" alt="wildan" class="shadow">
+                </div>
+                <h2 class="name label-font">Wildan Ziaulhaq, S.Kom.</h2>
+                <p class="desc label-font label">Putra pertama dari</p>
+                <p class="desc label-font">Bapak Ir. H. Djoko Hery Saputro</p>
+                <p class="desc label-font">Ibu Sari Diyah K, S.Pt.</p>
+            </div>
+        </section>
 
     </div>
 
     <script src="./script.js"></script>
 </body>
+
 </html>

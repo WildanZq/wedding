@@ -19,12 +19,24 @@ function next() {
             video.play();
             break;
         case 1:
+            const opening = document.getElementById('opening');
+            opening.classList.add('opened');
             video.pause();
+            break;
+        case 2:
+            const profileGina = document.getElementById('profile-gina');
+            profileGina.classList.add('opened');
+            break;
+        case 3:
+            const profileWildan = document.getElementById('profile-wildan');
+            profileWildan.classList.add('opened');
             break;
         default:
             break;
     }
-    currentPage++;
+    if (currentPage >= 0 && currentPage <= 7 ) {
+        currentPage++;
+    }
 }
 
 function prev() {
@@ -35,12 +47,24 @@ function prev() {
             video.pause();
             break;
         case 2:
+            const opening = document.getElementById('opening');
+            opening.classList.remove('opened');
             video.play();
+            break;
+        case 3:
+            const profileGina = document.getElementById('profile-gina');
+            profileGina.classList.remove('opened');
+            break;
+        case 4:
+            const rofileWildan = document.getElementById('profile-wildan');
+            rofileWildan.classList.remove('opened');
             break;
         default:
             break;
     }
-    currentPage--;
+    if (currentPage >= 1 && currentPage <= 8 ) {
+        currentPage--;
+    }
 }
 
 // MARK: swipe logic

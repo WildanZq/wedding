@@ -39,12 +39,17 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    background: rgb(234, 234, 234);
 
     transition: transform .7s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 #main-wrapper section.opened {
     transform: translateY(-100%);
+}
+
+.shadow {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 /* MARK: separator */
@@ -216,7 +221,6 @@ section#opening {
 
 section#opening .video-wrapper {
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -226,7 +230,6 @@ section#opening .video-wrapper video {
     width: auto;
     height: 60dvh;
     margin-top: 40px;
-
     border-radius: 20px;
 }
 
@@ -242,4 +245,82 @@ section#opening .ayat-wrapper .qs {
     font-size: 14px;
     text-align: center;
     font-weight: 400;
+}
+
+/* MARK: profile */
+
+section#profile-gina {
+    z-index: 7;
+}
+
+section#profile-wildan {
+    z-index: 6;
+}
+
+section.profile .image-wrapper::before {
+    font-family: "Bonheur Royale", cursive;
+    font-style: normal;
+    font-size: 64px;
+
+    position: absolute;
+}
+
+section#profile-gina .image-wrapper::before {
+    content: "Gina";
+    right: -20px;
+    top: -30px;
+}
+
+section#profile-wildan .image-wrapper::before {
+    content: "Wildan";
+    right: -30px;
+    top: -30px;
+}
+
+section.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+section.profile .title {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section.profile .separator {
+    margin: 30px 0;
+}
+
+section.profile .image-wrapper {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+section.profile .image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+section.profile .name {
+    font-size: 28px;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+section.profile .desc.label {
+    font-weight: 500;
+}
+
+section.profile .desc {
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+    margin: 0;
 }
