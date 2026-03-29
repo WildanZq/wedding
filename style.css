@@ -109,13 +109,13 @@ section#cover .title-wrapper .headline .title {
 
 section#cover .title-wrapper .headline .title h1 {
     margin: 40px 0;
-    padding-left: 20px;
+    padding-right: 28px;
 }
 
 section#cover .title-wrapper .headline .title::before {
-    content: "Wildan";
+    content: "Gina";
     position: absolute;
-    right: 30px;
+    right: 68px;
     top: -10px;
 
     font-weight: 400;
@@ -123,7 +123,7 @@ section#cover .title-wrapper .headline .title::before {
 }
 
 section#cover .title-wrapper .headline .title::after {
-    content: "Gina";
+    content: "Wildan";
     position: absolute;
     left: 40px;
     bottom: 0px;
