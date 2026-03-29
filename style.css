@@ -190,7 +190,7 @@ section#cover .title-wrapper .headline .title::after {
 section#cover .title-wrapper .invitee .label {
     font-size: 14px;
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 section#cover .title-wrapper .invitee .name {
@@ -204,10 +204,20 @@ section#cover .title-wrapper .invitee button {
     background: rgb(65, 65, 65);
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px 12px 40px 12px;
     padding: 10px 30px;
+    margin: 0 auto;
     margin-top: 18px;
     margin-bottom: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section#cover .title-wrapper .invitee button span {
+    font-size: 16px;
+    margin-right: 6px;
 }
 
 /* MARK: opening */
@@ -391,6 +401,7 @@ section#schedule a {
     display: block;
     text-align: center;
     margin-top: 18px;
+    text-decoration: none;
 }
 
 section#schedule button {
@@ -398,6 +409,16 @@ section#schedule button {
     background: rgb(65, 65, 65);
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px 12px 40px 12px;
     padding: 10px 30px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section#schedule button span {
+    font-size: 16px;
+    margin-right: 6px;
 }
