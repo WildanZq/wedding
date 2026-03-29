@@ -325,3 +325,79 @@ section.profile .desc {
     font-size: 14px;
     margin: 0;
 }
+
+/* MARK: schedule */
+section#schedule {
+    z-index: 5;
+
+    background-image: url(./assets/shadow.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+section#schedule::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f6f6f6e0;
+}
+
+section#schedule .wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+section#schedule .wrapper > div {
+    padding: 0 36px;
+}
+
+section#schedule .wrapper > div:first-child {
+    margin-bottom: 52px;
+}
+
+section#schedule .title {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section#schedule .separator {
+    margin-top: 6px;
+    margin-bottom: 22px;
+}
+
+section#schedule p {
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+section#schedule p.bold {
+    font-weight: 500;
+}
+
+section#schedule a {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+}
+
+section#schedule button {
+    cursor: pointer;
+    background: rgb(65, 65, 65);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+}
