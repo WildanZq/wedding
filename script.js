@@ -35,10 +35,14 @@ function next() {
             const schedule = document.getElementById('schedule');
             schedule.classList.add('opened');
             break;
+        case 5:
+            const reservation = document.getElementById('reservation');
+            reservation.classList.add('opened');
+            break;
         default:
             break;
     }
-    if (currentPage >= 0 && currentPage <= 7 ) {
+    if (currentPage >= 0 && currentPage <= 7) {
         currentPage++;
     }
 }
@@ -67,10 +71,14 @@ function prev() {
             const schedule = document.getElementById('schedule');
             schedule.classList.remove('opened');
             break;
+        case 6:
+            const reservation = document.getElementById('reservation');
+            reservation.classList.remove('opened');
+            break;
         default:
             break;
     }
-    if (currentPage >= 1 && currentPage <= 8 ) {
+    if (currentPage >= 1 && currentPage <= 8) {
         currentPage--;
     }
 }
@@ -108,19 +116,67 @@ document.addEventListener('touchmove', moveTouch, false);
 // MARK: key up and down logic
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-    event.preventDefault();
-  }
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        event.preventDefault();
+    }
 
-  switch (event.key) {
-    case "ArrowUp":
-      prev();
-      break;
-    case "ArrowDown":
-      next();
-      break;
-    default:
-      return;
-  }
+    switch (event.key) {
+        case "ArrowUp":
+            prev();
+            break;
+        case "ArrowDown":
+            next();
+            break;
+        default:
+            return;
+    }
 });
 
+// MARK: countdown logic
+
+const dayElm = document.getElementById('days')
+const hourElm = document.getElementById('hours')
+const minuteElm = document.getElementById('minutes')
+const secondElm = document.getElementById('seconds')
+
+const date1 = new Date("2026-04-18T11:30:00+08:00").getTime();
+const date2 = new Date("2026-05-16T10:00:00+07:00").getTime();
+const currentDate = new Date().getTime()
+
+var targetDate = date1
+
+if (currentDate > date1) {
+    targetDate = date2
+}
+
+const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    dayElm.innerHTML = days < 10 ? `0${days}` : days;
+    hourElm.innerHTML = hours < 10 ? `0${hours}` : hours;
+    minuteElm.innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+    secondElm.innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+
+    if (distance < 0) {
+        clearInterval(timer);
+    }
+}, 1000);
+
+// MARK: hide form logic
+
+const personCountElm = document.getElementById('person-count')
+const comeElm = document.getElementById('come')
+
+comeElm.addEventListener("change", (event) => {
+  if (event.target.value == 'no') {
+    personCountElm.classList.add('hide')
+  } else {
+    personCountElm.classList.remove('hide')
+  }
+});

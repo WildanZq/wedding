@@ -151,7 +151,7 @@ section#cover .title-wrapper .headline {
 section#cover .title-wrapper .headline .label {
     font-size: 14px;
     margin: 0;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
 }
 
 section#cover .title-wrapper .headline .title {
@@ -421,4 +421,129 @@ section#schedule button {
 section#schedule button span {
     font-size: 18px;
     margin-right: 6px;
+}
+
+/* MARK: reservation */
+
+section#reservation {
+    z-index: 4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section#reservation .form {
+    margin-bottom: 28px;
+    padding: 0 3rem;
+}
+
+section#reservation .form .title {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section#reservation .form .separator {
+    margin-top: 6px;
+    margin-bottom: 22px;
+}
+
+section#reservation .form p {
+    margin: 0;
+    margin-bottom: 28px;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+}
+
+section#reservation .form .input-wrapper {
+    width: 100%;
+    max-width: 310px;
+    max-height: 70px;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+
+section#reservation .form #person-count {
+    overflow: hidden;
+    transition: max-height .7s cubic-bezier(0.55, 0.085, 0.68, 0.53), margin .7s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+section#reservation .form #person-count.hide {
+    margin-bottom: 0;
+    max-height: 0;
+}
+
+section#reservation .form .input-wrapper:last-child {
+    margin-bottom: 30px;
+}
+
+section#reservation .form label {
+    font-size: 12px;
+}
+
+section#reservation .form input, section#reservation .form select, section#reservation .form textarea {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: thin solid rgb(65, 65, 65);
+    background: none;
+    padding: 12px 0;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+section#reservation .form button {
+    cursor: pointer;
+    background: rgb(65, 65, 65);
+    color: white;
+    border: none;
+    border-radius: 40px 12px 40px 12px;
+    padding: 10px 30px;
+    margin: 0 auto;
+    margin-top: 22px;
+    width: 100%;
+    max-width: 310px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section#reservation .form button span {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+section#reservation .separator {
+    margin-bottom: 22px;
+}
+
+section#reservation .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section#reservation .countdown .countdown-wrapper {
+    border-radius: 12px;
+    background-color: rgb(65, 65, 65);
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 0 4px;
+}
+
+section#reservation .countdown .countdown-wrapper .label {
+    margin: 0;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+section#reservation .countdown .countdown-wrapper .value {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 500;
 }
