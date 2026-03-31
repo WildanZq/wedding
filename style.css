@@ -613,3 +613,68 @@ section#gift .gallery-wrapper .slider img {
     -webkit-user-drag: none;
     user-drag: none;
 }
+
+/* MARK: closing */
+
+section#closing {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section#closing p {
+    margin: 0;
+    margin-bottom: 36px;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+    padding: 0 3rem;
+}
+
+section#closing .sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section#closing .sign .label {
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+section#closing .sign .title {
+    position: relative;
+    font-size: 28px;
+
+    font-family: "Bonheur Royale", cursive;
+    font-style: normal;
+}
+
+section#closing .sign .title h1 {
+    margin: 40px 0;
+    padding-right: 28px;
+}
+
+section#closing .sign .title::before {
+    content: "Gina";
+    position: absolute;
+    right: 68px;
+    top: -10px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#closing .sign .title::after {
+    content: "Wildan";
+    position: absolute;
+    left: 40px;
+    bottom: 0px;
+
+    font-weight: 400;
+    font-size: 68px;
+}

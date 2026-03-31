@@ -46,7 +46,7 @@ function next() {
         default:
             break;
     }
-    if (currentPage >= 0 && currentPage <= 7) {
+    if (currentPage >= 0 && currentPage <= 6) {
         currentPage++;
     }
 }
@@ -86,7 +86,7 @@ function prev() {
         default:
             break;
     }
-    if (currentPage >= 1 && currentPage <= 8) {
+    if (currentPage >= 1 && currentPage <= 7) {
         currentPage--;
     }
 }
@@ -120,6 +120,26 @@ function moveTouch(e) {
 
 document.addEventListener('touchstart', startTouch, false);
 document.addEventListener('touchmove', moveTouch, false);
+
+// MARK: scroll logic
+
+let isScrolling = false;
+
+window.addEventListener('wheel', (event) => {
+  if (isScrolling) return;
+
+  isScrolling = true;
+
+  if (event.deltaY > 0) {
+    next();
+  } else {
+    prev();
+  }
+
+  setTimeout(() => {
+    isScrolling = false;
+  }, 1000); 
+}, { passive: true });
 
 // MARK: key up and down logic
 
