@@ -74,38 +74,39 @@ button.shadow span {
 /* MARK: separator */
 
 .separator {
-  position: relative;
-  width: 100%;
-  margin: 0;
-  height: 5px;
-  display: block;
-  text-align: center;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: 5px;
+    display: block;
+    text-align: center;
 }
 
 .separator span {
-  display: block;
-  position: relative;
-  width: 5px;
-  height: 5px;
-  background: #0d0d0d;
-  border-radius: 10px;
-  margin: 0 auto;
+    display: block;
+    position: relative;
+    width: 5px;
+    height: 5px;
+    background: #0d0d0d;
+    border-radius: 10px;
+    margin: 0 auto;
 }
 
-span::before, span::after {
-  content: "";
-  vertical-align: top;
-  border-bottom: 1px solid #0d0d0d;
-  position: absolute;
-  top: 0;
-  right: 9pt;
-  height: 2px;
-  width: 28px;
+span::before,
+span::after {
+    content: "";
+    vertical-align: top;
+    border-bottom: 1px solid #0d0d0d;
+    position: absolute;
+    top: 0;
+    right: 9pt;
+    height: 2px;
+    width: 28px;
 }
 
 span::after {
-  left: 9pt;
-  right: inherit;
+    left: 9pt;
+    right: inherit;
 }
 
 /* MARK: cover */
@@ -370,11 +371,11 @@ section#schedule .wrapper {
     height: 100%;
 }
 
-section#schedule .wrapper > div {
+section#schedule .wrapper>div {
     padding: 0 36px;
 }
 
-section#schedule .wrapper > div:first-child {
+section#schedule .wrapper>div:first-child {
     margin-bottom: 52px;
 }
 
@@ -495,7 +496,9 @@ section#reservation .form label {
     font-size: 12px;
 }
 
-section#reservation .form input, section#reservation .form select, section#reservation .form textarea {
+section#reservation .form input,
+section#reservation .form select,
+section#reservation .form textarea {
     display: block;
     width: 100%;
     border: none;
@@ -588,6 +591,7 @@ section#gift .gallery-wrapper {
     height: 50%;
     max-height: 540px;
     overflow: hidden;
+    padding-bottom: 12px;
 }
 
 section#gift .gallery-wrapper .slider {
@@ -599,4 +603,13 @@ section#gift .gallery-wrapper .slider {
 section#gift .gallery-wrapper .slider img {
     height: 100%;
     width: auto;
+    border-radius: 28px;
+    padding: 0 6px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
 }

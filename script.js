@@ -195,46 +195,39 @@ const track = document.getElementById('slider')
 
 for (let i = 1; i <= 18; i++) {
     const img = document.createElement('img');
+    img.draggable = false
     img.src = `./assets/gallery/${i}.jpg`;
     track.appendChild(img);
 }
 
-// MARk: slide carousel logic
+// MARK: slide carousel logic
 
 const slides = Array.from(track.children);
 const SPEED = 50;
 
-slides.forEach(slide => {
-  track.appendChild(slide.cloneNode(true));
+const originalSlides = Array.from(track.children);
+
+// Clone just once — CSS animation handles the infinite loop
+originalSlides.forEach(slide => {
+    track.appendChild(slide.cloneNode(true));
 });
 
-let totalOriginalWidth = 0;
-requestAnimationFrame(() => {
-  totalOriginalWidth = slides.reduce((sum, s) => sum + s.getBoundingClientRect().width, 0);
+requestAnimationFrame(function () {
+    return requestAnimationFrame(function () {
+        const trackRect = track.getBoundingClientRect();
+        const lastOriginal = originalSlides[originalSlides.length - 1];
+        const totalOriginalWidth = lastOriginal.getBoundingClientRect().right - trackRect.left;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes carousel-scroll {
+                0%   { transform: translateX(0); }
+                100% { transform: translateX(-${totalOriginalWidth}px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const duration = totalOriginalWidth / SPEED;
+        track.style.animation = `carousel-scroll ${duration}s linear infinite`;
+    })
 });
-
-let offset = 0;
-let lastTime = null;
-
-function animate(timestamp) {
-  if (!lastTime) {
-    lastTime = timestamp;
-    requestAnimationFrame(animate);
-    return;
-  }
-
-  const delta = Math.min(timestamp - lastTime, 50);
-  lastTime = timestamp;
-
-  offset += SPEED * (delta / 1000);
-
-  // Reset once we've scrolled through all original slides
-  if (offset >= totalOriginalWidth) {
-    offset -= totalOriginalWidth;
-  }
-
-  track.style.transform = `translateX(-${offset}px)`;
-  requestAnimationFrame(animate);
-}
-
-requestAnimationFrame(animate);
