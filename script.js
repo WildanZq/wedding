@@ -39,6 +39,10 @@ function next() {
             const reservation = document.getElementById('reservation');
             reservation.classList.add('opened');
             break;
+        case 6:
+            const gift = document.getElementById('gift');
+            gift.classList.add('opened');
+            break;
         default:
             break;
     }
@@ -74,6 +78,10 @@ function prev() {
         case 6:
             const reservation = document.getElementById('reservation');
             reservation.classList.remove('opened');
+            break;
+        case 7:
+            const gift = document.getElementById('gift');
+            gift.classList.remove('opened');
             break;
         default:
             break;
@@ -115,7 +123,7 @@ document.addEventListener('touchmove', moveTouch, false);
 
 // MARK: key up and down logic
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
         event.preventDefault();
     }
@@ -149,7 +157,7 @@ if (currentDate > date1) {
     targetDate = date2
 }
 
-const timer = setInterval(() => {
+const timer = setInterval(function () {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
@@ -173,10 +181,60 @@ const timer = setInterval(() => {
 const personCountElm = document.getElementById('person-count')
 const comeElm = document.getElementById('come')
 
-comeElm.addEventListener("change", (event) => {
-  if (event.target.value == 'no') {
-    personCountElm.classList.add('hide')
-  } else {
-    personCountElm.classList.remove('hide')
-  }
+comeElm.addEventListener("change", function (event) {
+    if (event.target.value == 'no') {
+        personCountElm.classList.add('hide')
+    } else {
+        personCountElm.classList.remove('hide')
+    }
 });
+
+// MARK: populate gallery slider
+
+const track = document.getElementById('slider')
+
+for (let i = 1; i <= 18; i++) {
+    const img = document.createElement('img');
+    img.src = `./assets/gallery/${i}.jpg`;
+    track.appendChild(img);
+}
+
+// MARk: slide carousel logic
+
+const slides = Array.from(track.children);
+const SPEED = 50;
+
+slides.forEach(slide => {
+  track.appendChild(slide.cloneNode(true));
+});
+
+let totalOriginalWidth = 0;
+requestAnimationFrame(() => {
+  totalOriginalWidth = slides.reduce((sum, s) => sum + s.getBoundingClientRect().width, 0);
+});
+
+let offset = 0;
+let lastTime = null;
+
+function animate(timestamp) {
+  if (!lastTime) {
+    lastTime = timestamp;
+    requestAnimationFrame(animate);
+    return;
+  }
+
+  const delta = Math.min(timestamp - lastTime, 50);
+  lastTime = timestamp;
+
+  offset += SPEED * (delta / 1000);
+
+  // Reset once we've scrolled through all original slides
+  if (offset >= totalOriginalWidth) {
+    offset -= totalOriginalWidth;
+  }
+
+  track.style.transform = `translateX(-${offset}px)`;
+  requestAnimationFrame(animate);
+}
+
+requestAnimationFrame(animate);
