@@ -150,66 +150,68 @@
 
         <!-- MARK: reservation -->
         <section id="reservation">
-            <form class="form" id="reservation-form">
-                <h1 class="title cursive-font">Reservasi</h1>
+            <div class="wrapper">
+                <form class="form" id="reservation-form">
+                    <h1 class="title cursive-font">Reservasi</h1>
+                    <div class="separator">
+                        <span></span>
+                    </div>
+                    <p class="label-font">
+                        Kami sangat menantikan kehadiran Bapak/Ibu/Saudara/i di hari bahagia kami. Mohon kesediaannya untuk
+                        mengonfirmasi kehadiran. Terima kasih.
+                    </p>
+                    <div class="input-wrapper">
+                        <label for="name" class="label-font">Nama</label>
+                        <input name="name" id="name" class="label-font" type="text" placeholder="name" disabled
+                            value="Fulan bin Fulan">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="come" class="label-font">Kehadiran</label>
+                        <select name="come" id="come" class="label-font">
+                            <option value="mks">Hadir, di Makassar</option>
+                            <option value="prg">Hadir, di Ponorogo</option>
+                            <option value="no">Tidak Hadir</option>
+                        </select>
+                    </div>
+                    <div id="person-count" class="input-wrapper">
+                        <label for="person_count" class="label-font">Jumlah Tamu</label>
+                        <select name="person_count" id="person_count" class="label-font">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="message" class="label-font">Ucapan & Doa</label>
+                        <textarea name="message" id="message" rows="1" class="label-font"
+                            placeholder="Tulis pesan..."></textarea>
+                    </div>
+                    <button class="shadow" id="send">
+                        <span class="material-symbols-outlined">
+                            send
+                        </span>
+                        Kirim
+                    </button>
+                </form>
                 <div class="separator">
                     <span></span>
                 </div>
-                <p class="label-font">
-                    Kami sangat menantikan kehadiran Bapak/Ibu/Saudara/i di hari bahagia kami. Mohon kesediaannya untuk
-                    mengonfirmasi kehadiran. Terima kasih.
-                </p>
-                <div class="input-wrapper">
-                    <label for="name" class="label-font">Nama</label>
-                    <input name="name" id="name" class="label-font" type="text" placeholder="name" disabled
-                        value="Fulan bin Fulan">
-                </div>
-                <div class="input-wrapper">
-                    <label for="come" class="label-font">Kehadiran</label>
-                    <select name="come" id="come" class="label-font">
-                        <option value="mks">Hadir, di Makassar</option>
-                        <option value="prg">Hadir, di Ponorogo</option>
-                        <option value="no">Tidak Hadir</option>
-                    </select>
-                </div>
-                <div id="person-count" class="input-wrapper">
-                    <label for="person_count" class="label-font">Jumlah Tamu</label>
-                    <select name="person_count" id="person_count" class="label-font">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select>
-                </div>
-                <div class="input-wrapper">
-                    <label for="message" class="label-font">Ucapan & Doa</label>
-                    <textarea name="message" id="message" rows="1" class="label-font"
-                        placeholder="Tulis pesan..."></textarea>
-                </div>
-                <button class="shadow" id="send">
-                    <span class="material-symbols-outlined">
-                        send
-                    </span>
-                    Kirim
-                </button>
-            </form>
-            <div class="separator">
-                <span></span>
-            </div>
-            <div class="countdown">
-                <div class="countdown-wrapper">
-                    <h3 class="value label-font" id="days">00</h3>
-                    <h2 class="label label-font">HARI</h2>
-                </div>
-                <div class="countdown-wrapper">
-                    <h3 class="value label-font" id="hours">00</h3>
-                    <h2 class="label label-font">JAM</h2>
-                </div>
-                <div class="countdown-wrapper">
-                    <h3 class="value label-font" id="minutes">00</h3>
-                    <h2 class="label label-font">MENIT</h2>
-                </div>
-                <div class="countdown-wrapper">
-                    <h3 class="value label-font" id="seconds">00</h3>
-                    <h2 class="label label-font">DETIK</h2>
+                <div class="countdown">
+                    <div class="countdown-wrapper">
+                        <h3 class="value label-font" id="days">00</h3>
+                        <h2 class="label label-font">HARI</h2>
+                    </div>
+                    <div class="countdown-wrapper">
+                        <h3 class="value label-font" id="hours">00</h3>
+                        <h2 class="label label-font">JAM</h2>
+                    </div>
+                    <div class="countdown-wrapper">
+                        <h3 class="value label-font" id="minutes">00</h3>
+                        <h2 class="label label-font">MENIT</h2>
+                    </div>
+                    <div class="countdown-wrapper">
+                        <h3 class="value label-font" id="seconds">00</h3>
+                        <h2 class="label label-font">DETIK</h2>
+                    </div>
                 </div>
             </div>
         </section>
