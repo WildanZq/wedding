@@ -626,11 +626,15 @@ section#closing {
 
 section#closing p {
     margin: 0;
-    margin-bottom: 36px;
+    margin-bottom: 42px;
     font-size: 12px;
     font-weight: 300;
     text-align: center;
     padding: 0 3rem;
+}
+
+section#closing .separator {
+    margin-bottom: 24px;
 }
 
 section#closing .sign {
