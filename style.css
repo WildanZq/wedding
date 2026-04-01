@@ -599,7 +599,7 @@ section#reservation .form .response-wrapper .responses .response:last-child {
 section#reservation .form .response-wrapper .responses .response {
     background-color: rgb(234, 234, 234);
     padding: 16px 18px;
-    height: 80px;
+    height: 84px;
     margin-bottom: 10px;
     border-radius: 12px;
 
@@ -636,7 +636,7 @@ section#reservation .form .response-wrapper .responses .response p {
     line-clamp: 2;
     -webkit-line-clamp: 2;
 
-    max-height: 2.6em;
+    max-height: 2.8em;
     font-weight: 400;
 }
 
