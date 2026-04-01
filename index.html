@@ -151,7 +151,7 @@
         <!-- MARK: reservation -->
         <section id="reservation">
             <div class="wrapper">
-                <form class="form" id="reservation-form">
+                <form class="form" id="form">
                     <h1 class="title cursive-font">Reservasi</h1>
                     <div class="separator">
                         <span></span>
@@ -168,13 +168,14 @@
                     </div>
                     <div class="input-wrapper">
                         <label for="come" class="label-font">Kehadiran</label>
-                        <select name="come" id="come" class="label-font">
+                        <select name="come" id="come" class="label-font" required>
+                            <option value="">Pilih opsi...</option>
                             <option value="mks">Hadir, di Makassar</option>
                             <option value="prg">Hadir, di Ponorogo</option>
                             <option value="no">Tidak Hadir</option>
                         </select>
                     </div>
-                    <div id="person-count" class="input-wrapper">
+                    <div id="person-count" class="hide input-wrapper">
                         <label for="person_count" class="label-font">Jumlah Tamu</label>
                         <select name="person_count" id="person_count" class="label-font">
                             <option value="1">1</option>
@@ -186,7 +187,7 @@
                         <textarea name="message" id="message" rows="1" class="label-font"
                             placeholder="Tulis pesan..."></textarea>
                     </div>
-                    <button class="shadow" id="send">
+                    <button class="shadow" id="send" type="submit">
                         <span class="material-symbols-outlined">
                             send
                         </span>
@@ -298,6 +299,19 @@
     </div>
 
     <script src="./script.js"></script>
+    <script type="module" src="./rsvp.js"></script>
+    <script type="module">
+        import { getData, submitData } from './rsvp.js';
+        const data = await getData();
+        console.log(data);
+
+        const form = document.getElementById('form');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            await submitData();
+        });
+    </script>
 </body>
 
 </html>

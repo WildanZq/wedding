@@ -202,7 +202,7 @@ const personCountElm = document.getElementById('person-count')
 const comeElm = document.getElementById('come')
 
 comeElm.addEventListener("change", function (event) {
-    if (event.target.value == 'no') {
+    if (!event.target.value || event.target.value == 'no') {
         personCountElm.classList.add('hide')
     } else {
         personCountElm.classList.remove('hide')

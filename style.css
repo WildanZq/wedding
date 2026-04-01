@@ -515,6 +515,11 @@ section#reservation .form button {
     max-width: 310px;
 }
 
+section#reservation .form button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(169, 169, 169);
+}
+
 section#reservation .separator {
     margin-bottom: 22px;
 }
