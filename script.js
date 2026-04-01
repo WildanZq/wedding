@@ -126,19 +126,19 @@ document.addEventListener('touchmove', moveTouch, false);
 let isScrolling = false;
 
 window.addEventListener('wheel', (event) => {
-  if (isScrolling) return;
+    if (isScrolling) return;
 
-  isScrolling = true;
+    isScrolling = true;
 
-  if (event.deltaY > 0) {
-    next();
-  } else {
-    prev();
-  }
+    if (event.deltaY > 0) {
+        next();
+    } else {
+        prev();
+    }
 
-  setTimeout(() => {
-    isScrolling = false;
-  }, 1000); 
+    setTimeout(() => {
+        isScrolling = false;
+    }, 1000);
 }, { passive: true });
 
 // MARK: key up and down logic
@@ -234,15 +234,15 @@ originalSlides.forEach(slide => {
 
 requestAnimationFrame(function () {
     return requestAnimationFrame(function () {
-        const trackRect = track.getBoundingClientRect();
-        const lastOriginal = originalSlides[originalSlides.length - 1];
-        const totalOriginalWidth = lastOriginal.getBoundingClientRect().right - trackRect.left;
+        const trackLeft = track.getBoundingClientRect().left;
+        const firstClone = track.children[originalSlides.length];
+        const totalOriginalWidth = firstClone.getBoundingClientRect().left - trackLeft;
 
         const style = document.createElement('style');
         style.textContent = `
             @keyframes carousel-scroll {
-                0%   { transform: translateX(0); }
-                100% { transform: translateX(-${totalOriginalWidth}px); }
+                0%   { transform: translateX(-${totalOriginalWidth}px); }
+                100% { transform: translateX(-${totalOriginalWidth * 2}px); }
             }
         `;
         document.head.appendChild(style);
