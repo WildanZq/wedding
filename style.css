@@ -327,13 +327,13 @@ section.profile .separator {
 
 section.profile .image-wrapper {
     position: relative;
-    width: 70%;
+    width: fit-content;
     margin: 0 auto;
 }
 
 section.profile .image-wrapper img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 50vh;
     border-radius: 80px 20px 80px 20px;
 }
 
