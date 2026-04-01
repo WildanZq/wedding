@@ -252,3 +252,45 @@ requestAnimationFrame(function () {
     });
 });
 
+// MARK: copy logic
+
+const briBtn = document.getElementById('bri');
+const bniBtn = document.getElementById('bni');
+
+briBtn.addEventListener("click", function () {
+    navigator.clipboard.writeText('084001040221537')
+        .then(() => {
+            alert('Teks berhasil disalin');
+        });
+});
+
+bniBtn.addEventListener("click", function () {
+    navigator.clipboard.writeText('607428427')
+        .then(() => {
+            alert('Teks berhasil disalin');
+        });
+});
+
+// MARK: modal logic
+
+const modal = document.getElementById('modal');
+const modalCard = document.querySelectorAll('#modal .modal-card .card');
+const showModalBtn = document.getElementById('show-modal');
+
+showModalBtn.addEventListener("click", function () {
+    modal.classList.add('opacity');
+    modal.classList.add('visibility');
+});
+
+modalCard.forEach(function (el) {
+    el.addEventListener("click", function (e) {
+        e.stopPropagation();
+    });
+})
+
+modal.addEventListener("click", function () {
+    modal.classList.remove('opacity');
+    setTimeout(function () {
+        modal.classList.remove('visibility');
+    }, 500);
+});
