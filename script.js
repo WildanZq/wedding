@@ -1,6 +1,30 @@
 const video = document.getElementById("video");
 const openBtn = document.getElementById('open-button');
 
+const windowLoaded = new Promise(function (resolve) {
+    if (document.readyState === 'complete') {
+        resolve();
+    } else {
+        window.addEventListener('load', resolve, { once: true });
+    }
+});
+
+const videoDataLoaded = new Promise(function (resolve) {
+    if (video.readyState >= 2) {
+        resolve();
+    } else {
+        video.addEventListener('loadeddata', resolve, { once: true });
+    }
+});
+
+Promise.all([windowLoaded, videoDataLoaded]).then(() => {
+    const loading = document.getElementById('loading');
+    loading.classList.add('opacity');
+    setTimeout(function () {
+        loading.classList.add('hidden');
+    }, 500);
+});
+
 var currentPage = 0;
 
 openBtn.addEventListener("click", function () {
@@ -288,23 +312,23 @@ for (let i = 1; i <= 14; i++) {
 const originalSlides = Array.from(track.children);
 
 function loadImage(imageUrl) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`Image failed to load: ${imageUrl}`));
-    img.src = imageUrl;
-  });
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error(`Image failed to load: ${imageUrl}`));
+        img.src = imageUrl;
+    });
 }
 
 async function loadAllImages(imageUrls) {
-  const promises = imageUrls.map(url => loadImage(url));
-  try {
-    const images = await Promise.all(promises);
-    return images;
-  } catch (error) {
-    console.error('One or more images failed to load:', error);
-    throw error;
-  }
+    const promises = imageUrls.map(url => loadImage(url));
+    try {
+        const images = await Promise.all(promises);
+        return images;
+    } catch (error) {
+        console.error('One or more images failed to load:', error);
+        throw error;
+    }
 }
 
 const imagesToLoad = []
