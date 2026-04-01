@@ -131,7 +131,9 @@ function moveTouch(e) {
 
     if (Math.abs(diffY) > 50) {
         if (diffY > 0) {
-            next();
+            if (currentPage != 0) {
+                next();
+            }
         } else {
             prev();
         }
@@ -153,7 +155,9 @@ window.addEventListener('wheel', (event) => {
     isScrolling = true;
 
     if (event.deltaY > 0) {
-        next();
+        if (currentPage != 0) {
+            next();
+        }
     } else {
         prev();
     }
