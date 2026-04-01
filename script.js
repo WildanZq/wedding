@@ -225,58 +225,6 @@ comeElm.addEventListener("change", function (event) {
     }
 });
 
-// MARK: populate gallery slider
-
-const track = document.getElementById('slider');
-
-for (let i = 1; i <= 14; i++) {
-    const img = document.createElement('img');
-    img.draggable = false
-    img.src = `./assets/gallery/${i}.jpg`;
-    track.appendChild(img);
-}
-
-// MARK: slide carousel logic
-
-const SPEED = 50; // px per second
-const originalSlides = Array.from(track.children);
-
-// Clone all originals and append them
-originalSlides.forEach(slide => {
-    track.appendChild(slide.cloneNode(true));
-});
-
-let offset = 0;
-let lastTime = null;
-let totalOriginalWidth = 0;
-
-function measure() {
-    const trackLeft = track.getBoundingClientRect().left;
-    const firstClone = track.children[originalSlides.length];
-    totalOriginalWidth = firstClone.getBoundingClientRect().left - trackLeft;
-}
-
-function tick(timestamp) {
-    if (!lastTime) lastTime = timestamp;
-    const delta = (timestamp - lastTime) / 1000; // seconds
-    lastTime = timestamp;
-
-    offset += SPEED * delta;
-
-    if (offset >= totalOriginalWidth) {
-        offset -= totalOriginalWidth;
-    }
-
-    track.style.transform = `translateX(-${offset}px)`;
-    requestAnimationFrame(tick);
-}
-
-// Wait for layout before measuring
-requestAnimationFrame(function () {
-    measure();
-    requestAnimationFrame(tick);
-});
-
 // MARK: copy logic
 
 const briBtn = document.getElementById('bri');
@@ -312,4 +260,88 @@ modal.addEventListener("click", function () {
     setTimeout(function () {
         modal.classList.remove('visibility');
     }, 500);
+});
+
+// MARK: populate gallery slider
+
+const track = document.getElementById('slider');
+
+for (let i = 1; i <= 14; i++) {
+    const img = document.createElement('img');
+    img.draggable = false
+    img.src = `./assets/gallery/${i}.jpg`;
+    track.appendChild(img);
+}
+
+// MARK: wait for images to load
+
+const originalSlides = Array.from(track.children);
+
+function loadImage(imageUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Image failed to load: ${imageUrl}`));
+    img.src = imageUrl;
+  });
+}
+
+async function loadAllImages(imageUrls) {
+  const promises = imageUrls.map(url => loadImage(url));
+  try {
+    const images = await Promise.all(promises);
+    console.log('All images loaded', images);
+    return images;
+  } catch (error) {
+    console.error('One or more images failed to load:', error);
+    throw error; // Propagate the error if any image fails
+  }
+}
+
+const imagesToLoad = []
+
+originalSlides.forEach(function (el) {
+    imagesToLoad.push(el.src)
+});
+
+
+// MARK: slide carousel logic
+
+const SPEED = 50; // px per second
+
+// Clone all originals and append them
+originalSlides.forEach(slide => {
+    track.appendChild(slide.cloneNode(true));
+});
+
+let offset = 0;
+let lastTime = null;
+let totalOriginalWidth = 0;
+
+function measure() {
+    const trackLeft = track.getBoundingClientRect().left;
+    const firstClone = track.children[originalSlides.length];
+    totalOriginalWidth = firstClone.getBoundingClientRect().left - trackLeft;
+}
+
+function tick(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const delta = (timestamp - lastTime) / 1000; // seconds
+    lastTime = timestamp;
+
+    offset += SPEED * delta;
+
+    if (offset >= totalOriginalWidth) {
+        offset -= totalOriginalWidth;
+    }
+
+    track.style.transform = `translateX(-${offset}px)`;
+    requestAnimationFrame(tick);
+}
+
+// Wait for layout before measuring
+requestAnimationFrame(async function () {
+    await loadAllImages(imagesToLoad);
+    measure();
+    requestAnimationFrame(tick);
 });
