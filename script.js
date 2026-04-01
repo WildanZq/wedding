@@ -238,34 +238,43 @@ for (let i = 1; i <= 14; i++) {
 
 // MARK: slide carousel logic
 
-const slides = Array.from(track.children);
-const SPEED = 50;
-
+const SPEED = 50; // px per second
 const originalSlides = Array.from(track.children);
 
-// Clone just once — CSS animation handles the infinite loop
+// Clone all originals and append them
 originalSlides.forEach(slide => {
     track.appendChild(slide.cloneNode(true));
 });
 
+let offset = 0;
+let lastTime = null;
+let totalOriginalWidth = 0;
+
+function measure() {
+    const trackLeft = track.getBoundingClientRect().left;
+    const firstClone = track.children[originalSlides.length];
+    totalOriginalWidth = firstClone.getBoundingClientRect().left - trackLeft;
+}
+
+function tick(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    const delta = (timestamp - lastTime) / 1000; // seconds
+    lastTime = timestamp;
+
+    offset += SPEED * delta;
+
+    if (offset >= totalOriginalWidth) {
+        offset -= totalOriginalWidth;
+    }
+
+    track.style.transform = `translateX(-${offset}px)`;
+    requestAnimationFrame(tick);
+}
+
+// Wait for layout before measuring
 requestAnimationFrame(function () {
-    return requestAnimationFrame(function () {
-        const trackLeft = track.getBoundingClientRect().left;
-        const firstClone = track.children[originalSlides.length];
-        const totalOriginalWidth = firstClone.getBoundingClientRect().left - trackLeft;
-
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes carousel-scroll {
-                0%   { transform: translateX(0); }
-                100% { transform: translateX(-${totalOriginalWidth}px); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        const duration = totalOriginalWidth / SPEED;
-        track.style.animation = `carousel-scroll ${duration}s linear infinite`;
-    });
+    measure();
+    requestAnimationFrame(tick);
 });
 
 // MARK: copy logic
