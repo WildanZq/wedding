@@ -42,6 +42,7 @@ function next() {
         case 6:
             const gift = document.getElementById('gift');
             gift.classList.add('opened');
+            document.body.classList.add('dark');
             break;
         default:
             break;
@@ -82,6 +83,7 @@ function prev() {
         case 7:
             const gift = document.getElementById('gift');
             gift.classList.remove('opened');
+            document.body.classList.remove('dark');
             break;
         default:
             break;
@@ -89,6 +91,20 @@ function prev() {
     if (currentPage >= 1 && currentPage <= 7) {
         currentPage--;
     }
+}
+
+// MARK: init name
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const recipient = urlParams.get('to');
+const nameText = document.getElementById('open-name');
+nameText.innerHTML = recipient;
+
+if (!recipient) {
+    const dear = document.getElementById('open-dear');
+    dear.innerHTML = '';
 }
 
 // MARK: swipe logic
@@ -258,17 +274,11 @@ const briBtn = document.getElementById('bri');
 const bniBtn = document.getElementById('bni');
 
 briBtn.addEventListener("click", function () {
-    navigator.clipboard.writeText('084001040221537')
-        .then(() => {
-            alert('Teks berhasil disalin');
-        });
+    navigator.clipboard.writeText('084001040221537');
 });
 
 bniBtn.addEventListener("click", function () {
-    navigator.clipboard.writeText('607428427')
-        .then(() => {
-            alert('Teks berhasil disalin');
-        });
+    navigator.clipboard.writeText('607428427');
 });
 
 // MARK: modal logic
