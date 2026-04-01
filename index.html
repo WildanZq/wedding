@@ -161,38 +161,46 @@
                         untuk
                         mengonfirmasi kehadiran. Terima kasih.
                     </p>
-                    <div class="input-wrapper">
-                        <label for="name" class="label-font">Nama</label>
-                        <input name="name" id="name" class="label-font" type="text" placeholder="name" disabled
-                            value="Fulan bin Fulan">
+                    <div id="form-wrapper" class="form-wrapper">
+                        <div class="input-wrapper">
+                            <label for="name" class="label-font">Nama</label>
+                            <input name="name" id="name" class="label-font" type="text" placeholder="name" disabled
+                                value="Fulan bin Fulan">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="come" class="label-font">Kehadiran</label>
+                            <select name="come" id="come" class="label-font" required>
+                                <option value="">Pilih opsi...</option>
+                                <option value="mks">Hadir, di Makassar</option>
+                                <option value="prg">Hadir, di Ponorogo</option>
+                                <option value="no">Tidak hadir</option>
+                            </select>
+                        </div>
+                        <div id="person-count" class="hide input-wrapper">
+                            <label for="person_count" class="label-font">Jumlah Tamu</label>
+                            <select name="person_count" id="person_count" class="label-font">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="message" class="label-font">Ucapan & Doa</label>
+                            <textarea name="message" id="message" rows="1" class="label-font"
+                                placeholder="Tulis pesan..."></textarea>
+                        </div>
+                        <button class="shadow" id="send" type="submit">
+                            <span class="material-symbols-outlined">
+                                send
+                            </span>
+                            Kirim
+                        </button>
                     </div>
-                    <div class="input-wrapper">
-                        <label for="come" class="label-font">Kehadiran</label>
-                        <select name="come" id="come" class="label-font" required>
-                            <option value="">Pilih opsi...</option>
-                            <option value="mks">Hadir, di Makassar</option>
-                            <option value="prg">Hadir, di Ponorogo</option>
-                            <option value="no">Tidak Hadir</option>
-                        </select>
+
+                    <div id="response-wrapper" class="response-wrapper">
+                        <h3 class="label-font">Reservasi telah kami terima,<br>Terima kasih</h3>
+                        
+                        <div id="responses" class="responses label-font"></div>
                     </div>
-                    <div id="person-count" class="hide input-wrapper">
-                        <label for="person_count" class="label-font">Jumlah Tamu</label>
-                        <select name="person_count" id="person_count" class="label-font">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </div>
-                    <div class="input-wrapper">
-                        <label for="message" class="label-font">Ucapan & Doa</label>
-                        <textarea name="message" id="message" rows="1" class="label-font"
-                            placeholder="Tulis pesan..."></textarea>
-                    </div>
-                    <button class="shadow" id="send" type="submit">
-                        <span class="material-symbols-outlined">
-                            send
-                        </span>
-                        Kirim
-                    </button>
                 </form>
                 <div class="separator">
                     <span></span>
@@ -305,18 +313,7 @@
 
     <script src="./script.js"></script>
     <script type="module" src="./rsvp.js"></script>
-    <script type="module">
-        import { getData, submitData } from './rsvp.js';
-        const data = await getData();
-        console.log(data);
-
-        const form = document.getElementById('form');
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            await submitData();
-        });
-    </script>
+    <script type="module" src="./reservation.js"></script>
 </body>
 
 </html>

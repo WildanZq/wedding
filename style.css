@@ -30,7 +30,8 @@ body.dark {
     background-color: black;
 }
 
-img, video {
+img,
+video {
     pointer-events: none;
 }
 
@@ -458,7 +459,26 @@ section#reservation .wrapper {
 
 section#reservation .form {
     margin-bottom: 28px;
+}
+
+section#reservation .form>* {
     padding: 0 3rem;
+}
+
+section#reservation .form .separator {
+    padding: 0;
+}
+
+section#reservation .form-wrapper {
+    overflow: hidden;
+    transition: max-height .7s linear, opacity .7s linear;
+    max-height: 400px;
+    opacity: 1;
+}
+
+section#reservation .form-wrapper.hide {
+    max-height: 0;
+    opacity: 0;
 }
 
 section#reservation .form .title {
@@ -518,6 +538,7 @@ section#reservation .form textarea {
     padding: 12px 0;
     font-size: 12px;
     font-weight: 300;
+    resize: vertical;
 }
 
 section#reservation .form button {
@@ -529,6 +550,86 @@ section#reservation .form button {
 section#reservation .form button:disabled {
     cursor: not-allowed;
     background-color: rgb(169, 169, 169);
+}
+
+section#reservation .form .response-wrapper {
+    padding: 0;
+    overflow: hidden;
+    transition: max-height .7s linear, opacity .7s linear;
+    max-height: 0;
+    opacity: 0;
+}
+
+section#reservation .form .response-wrapper.show {
+    max-height: 200px;
+    opacity: 1;
+}
+
+section#reservation .form .response-wrapper h3 {
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+section#reservation .form .response-wrapper .responses {
+    width: 100%;
+    overflow-y: auto;
+    text-align: left;
+    display: flex;
+    gap: 10px;
+}
+
+section#reservation .form .response-wrapper .responses .response:first-child {
+    margin-left: 10px;
+}
+
+section#reservation .form .response-wrapper .responses .response:last-child {
+    margin-right: 10px;
+}
+
+section#reservation .form .response-wrapper .responses .response {
+    background-color: rgb(234, 234, 234);
+    padding: 16px 18px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+
+    width: fit-content;
+    max-width: 70%;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+section#reservation .form .response-wrapper .responses .response h1 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+section#reservation .form .response-wrapper .responses .response span {
+    font-size: 10px;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+section#reservation .form .response-wrapper .responses .response p {
+    text-align: left;
+    margin: 0;
+    margin-top: 8px;
+
+    overflow: hidden;
+    display: -webkit-box;
+    box-orient: vertical;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+
+    max-height: 2.6em;
+    font-weight: 400;
 }
 
 section#reservation .separator {
@@ -642,7 +743,7 @@ section#closing {
 section#closing::before {
     content: "";
     position: absolute;
-    transform: translateY(-50%); 
+    transform: translateY(-50%);
     top: 50%;
     left: 0;
     width: 100%;
@@ -667,13 +768,13 @@ section#closing .closing-wrapper {
     color: rgb(234, 234, 234);
 }
 
-section#closing .closing-wrapper > div:first-child {
+section#closing .closing-wrapper>div:first-child {
     padding-top: 60px;
     margin-top: 40px;
     margin-bottom: min(50vh, 680px);
 }
 
-section#closing .closing-wrapper > div:last-child {
+section#closing .closing-wrapper>div:last-child {
     margin-bottom: 40px;
 }
 

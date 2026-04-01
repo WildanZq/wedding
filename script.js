@@ -123,7 +123,7 @@ function moveTouch(e) {
     const currentY = e.touches[0].clientY;
     const diffY = initialY - currentY;
 
-    if (Math.abs(diffY) > 10) {
+    if (Math.abs(diffY) > 50) {
         if (diffY > 0) {
             next();
         } else {
@@ -290,11 +290,10 @@ async function loadAllImages(imageUrls) {
   const promises = imageUrls.map(url => loadImage(url));
   try {
     const images = await Promise.all(promises);
-    console.log('All images loaded', images);
     return images;
   } catch (error) {
     console.error('One or more images failed to load:', error);
-    throw error; // Propagate the error if any image fails
+    throw error;
   }
 }
 
@@ -307,7 +306,7 @@ originalSlides.forEach(function (el) {
 
 // MARK: slide carousel logic
 
-const SPEED = 50; // px per second
+const SPEED = 80; // px per second
 
 // Clone all originals and append them
 originalSlides.forEach(slide => {
