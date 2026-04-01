@@ -211,7 +211,7 @@ comeElm.addEventListener("change", function (event) {
 
 // MARK: populate gallery slider
 
-const track = document.getElementById('slider')
+const track = document.getElementById('slider');
 
 for (let i = 1; i <= 18; i++) {
     const img = document.createElement('img');
@@ -241,13 +241,14 @@ requestAnimationFrame(function () {
         const style = document.createElement('style');
         style.textContent = `
             @keyframes carousel-scroll {
-                0%   { transform: translateX(-${totalOriginalWidth}px); }
-                100% { transform: translateX(-${totalOriginalWidth * 2}px); }
+                0%   { transform: translateX(0); }
+                100% { transform: translateX(-${totalOriginalWidth}px); }
             }
         `;
         document.head.appendChild(style);
 
         const duration = totalOriginalWidth / SPEED;
         track.style.animation = `carousel-scroll ${duration}s linear infinite`;
-    })
+    });
 });
+
