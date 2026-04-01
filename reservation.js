@@ -72,6 +72,10 @@ function createResponseElement(name, come_mks, come_prg, message) {
 }
 
 responseData.forEach(key => {
+    if (key == recipient) {
+        return;
+    }
+
     const resp = data[key];
     const div = createResponseElement(key, resp.come_mks, resp.come_prg, resp.message);
 
