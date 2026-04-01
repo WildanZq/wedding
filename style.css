@@ -30,6 +30,10 @@ body.dark {
     background-color: black;
 }
 
+img, video {
+    pointer-events: none;
+}
+
 #main-wrapper {
     position: relative;
     height: 100%;
