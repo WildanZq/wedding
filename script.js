@@ -229,7 +229,7 @@ comeElm.addEventListener("change", function (event) {
 
 const track = document.getElementById('slider');
 
-for (let i = 1; i <= 18; i++) {
+for (let i = 1; i <= 14; i++) {
     const img = document.createElement('img');
     img.draggable = false
     img.src = `./assets/gallery/${i}.jpg`;
