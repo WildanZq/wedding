@@ -19,6 +19,10 @@
   color-scheme: only light;
 }
 
+html, body {
+    overscroll-behavior-y: none; 
+}
+
 body {
     overflow: hidden;
     width: 100vw;
