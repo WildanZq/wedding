@@ -93,6 +93,12 @@ function prev() {
     }
 }
 
+function escapeHTML(str) {
+    const p = document.createElement('p');
+    p.textContent = str;
+    return p.innerHTML;
+}
+
 // MARK: init name
 
 const queryString = window.location.search;
@@ -100,7 +106,7 @@ const urlParams = new URLSearchParams(queryString);
 
 const recipient = urlParams.get('to');
 const nameText = document.getElementById('open-name');
-nameText.innerHTML = recipient;
+nameText.innerHTML = escapeHTML(recipient);
 
 if (!recipient) {
     const dear = document.getElementById('open-dear');

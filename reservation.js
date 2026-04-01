@@ -1,5 +1,11 @@
 import { getData, submitData } from './rsvp.js';
 
+function escapeHTML(str) {
+    const p = document.createElement('p');
+    p.textContent = str;
+    return p.innerHTML;
+}
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
@@ -45,7 +51,7 @@ function createResponseElement(name, come_mks, come_prg, message) {
     div.classList.add('shadow');
 
     const title = document.createElement('h1');
-    title.innerHTML = name;
+    title.innerHTML = escapeHTML(name);
     div.appendChild(title);
 
     const span = document.createElement('span');
@@ -59,7 +65,7 @@ function createResponseElement(name, come_mks, come_prg, message) {
     div.appendChild(span);
 
     const msg = document.createElement('p');
-    msg.innerHTML = message ? message : '-';
+    msg.innerHTML = escapeHTML(message ? message : '-');
     div.appendChild(msg);
 
     return div;
