@@ -547,6 +547,7 @@ section#reservation .form textarea {
     font-size: 12px;
     font-weight: 300;
     resize: vertical;
+    border-radius: 0;
 }
 
 section#reservation .form button {
