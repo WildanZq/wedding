@@ -1,6 +1,8 @@
 const video = document.getElementById("video");
 const openBtn = document.getElementById('open-button');
 
+video.load();
+
 const windowLoaded = new Promise(function (resolve) {
     if (document.readyState === 'complete') {
         resolve();
