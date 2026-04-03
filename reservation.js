@@ -1,4 +1,4 @@
-import { getData, submitData } from './rsvp.js';
+import { getData, getRecipientData, submitData } from './rsvp.js';
 
 function escapeHTML(str) {
     const p = document.createElement('p');
@@ -11,22 +11,22 @@ const urlParams = new URLSearchParams(queryString);
 
 const recipient = urlParams.get('to');
 
-const data = await getData();
+const recipientData = await getRecipientData();
 
-if (data[recipient]) {
+if (recipientData) {
     const come = document.getElementById('come');
     const personCount = document.getElementById('person-count');
     const message = document.getElementById('message');
 
-    message.value = data[recipient].message;
+    message.value = recipientData.message;
 
-    if (data[recipient].come_mks) {
+    if (recipientData.come_mks) {
         come.value = 'mks';
-        personCount.value = data[recipient].come_mks;
+        personCount.value = recipientData.come_mks;
         personCount.classList.remove('hide');
-    } else if (data[recipient].come_prg) {
+    } else if (recipientData.come_prg) {
         come.value = 'prg';
-        personCount.value = data[recipient].come_prg;
+        personCount.value = recipientData.come_prg;
         personCount.classList.remove('hide');
     } else {
         come.value = 'no';
@@ -39,9 +39,6 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
-const responseData = Object.keys(data);
-shuffleArray(responseData);
 
 const responses = document.getElementById('responses');
 
@@ -71,18 +68,23 @@ function createResponseElement(name, come_mks, come_prg, message) {
     return div;
 }
 
-responseData.forEach(key => {
-    if (key == recipient) {
-        return;
-    }
+async function showResponses() {
+    const data = await getData()
 
-    const resp = data[key];
-    const div = createResponseElement(key, resp.come_mks, resp.come_prg, resp.message);
+    const responseData = Object.keys(data);
+    shuffleArray(responseData);
 
-    responses.appendChild(div);
-});
+    responseData.forEach(key => {
+        if (key == recipient) {
+            return;
+        }
 
-function showResponses() {
+        const resp = data[key];
+        const div = createResponseElement(key, resp.come_mks, resp.come_prg, resp.message);
+
+        responses.appendChild(div);
+    });
+
     const formWrapper = document.getElementById('form-wrapper');
     formWrapper.classList.add('hide');
 
@@ -96,14 +98,17 @@ const form = document.getElementById('form');
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
+    const formBtn = document.getElementById('send');
+
     if (!recipient) {
+        formBtn.disabled = true;
         showResponses();
         return;
     }
 
+    formBtn.disabled = true;
     await submitData();
-
-    showResponses();
+    await showResponses();
 
     const come = document.getElementById('come').value; // mks | prg | no
     const person = document.getElementById('person_count').value;
