@@ -1,0 +1,85 @@
+section#cover .title-wrapper .headline .title h1 {
+    margin: 40px 0;
+    padding-left: 28px;
+}
+
+section#cover .title-wrapper .headline .title::before {
+    content: "Wildan";
+    position: absolute;
+    right: 68px;
+    top: -10px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#cover .title-wrapper .headline .title::after {
+    content: "Gina";
+    position: absolute;
+    left: 60px;
+    bottom: 0px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#profile-gina {
+    z-index: 6;
+}
+
+section#profile-wildan {
+    z-index: 7;
+}
+
+section#gift h1 {
+    text-align: center;
+}
+section#gift h1 {
+    margin: 0;
+    font-size: 42px;
+    font-weight: 500;
+    text-align: center;
+}
+
+section#gift .separator {
+    margin-top: 6px;
+    margin-bottom: 42px;
+}
+
+section#gift .gallery-wrapper {
+    padding: 0;
+}
+
+section#closing::before {
+    transform: translateY(-50%);
+    top: 47%;
+}
+
+section#closing .sign .label {
+    text-align: center;
+}
+
+section#closing .sign .title h1 {
+    margin: 40px 0;
+    padding-left: 28px;
+}
+
+section#closing .sign .title::before {
+    content: "Wildan";
+    position: absolute;
+    right: 68px;
+    top: -10px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
+
+section#closing .sign .title::after {
+    content: "Gina";
+    position: absolute;
+    left: 60px;
+    bottom: 0px;
+
+    font-weight: 400;
+    font-size: 68px;
+}
